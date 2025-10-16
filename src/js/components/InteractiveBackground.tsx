@@ -32,9 +32,9 @@ export const InteractiveBackground = () => {
       const { innerWidth, innerHeight } = window;
       canvas.width = innerWidth * dpr;
       canvas.height = innerHeight * dpr;
-  canvas.style.width = `${innerWidth}px`;
-  canvas.style.height = `${innerHeight}px`;
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      canvas.style.width = `${innerWidth}px`;
+      canvas.style.height = `${innerHeight}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       spawnParticles(innerWidth, innerHeight);
     };
 
@@ -56,7 +56,7 @@ export const InteractiveBackground = () => {
         vy: (Math.random() - 0.5) * speedLimiter,
         radius: Math.random() * MAX_RADIUS,
         baseRadius: Math.random() * MAX_RADIUS,
-        hue: 200 + Math.random() * 120
+        hue: 265 + Math.random() * 40
       };
     };
 
@@ -65,9 +65,9 @@ export const InteractiveBackground = () => {
       ctx.clearRect(0, 0, innerWidth, innerHeight);
 
       const gradient = ctx.createLinearGradient(0, 0, innerWidth, innerHeight);
-      gradient.addColorStop(0, 'rgba(94, 234, 212, 0.28)');
-      gradient.addColorStop(0.5, 'rgba(14, 165, 233, 0.18)');
-      gradient.addColorStop(1, 'rgba(168, 85, 247, 0.22)');
+      gradient.addColorStop(0, 'rgba(180, 132, 255, 0.25)');
+      gradient.addColorStop(0.5, 'rgba(124, 58, 237, 0.18)');
+      gradient.addColorStop(1, 'rgba(76, 29, 149, 0.22)');
 
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, innerWidth, innerHeight);
@@ -117,8 +117,8 @@ export const InteractiveBackground = () => {
         particle.y,
         particle.radius * 1.6
       );
-      gradient.addColorStop(0, `hsla(${particle.hue}, 90%, 70%, 0.9)`);
-      gradient.addColorStop(1, `hsla(${particle.hue}, 72%, 42%, 0)`);
+      gradient.addColorStop(0, `hsla(${particle.hue}, 90%, 72%, 0.9)`);
+      gradient.addColorStop(1, `hsla(${particle.hue}, 70%, 32%, 0)`);
 
       ctxToRender.beginPath();
       ctxToRender.fillStyle = gradient;
@@ -137,7 +137,7 @@ export const InteractiveBackground = () => {
           const dist = Math.hypot(dx, dy);
           if (dist < maxDistance) {
             const alpha = 1 - dist / maxDistance;
-            ctxToRender.strokeStyle = `rgba(148, 163, 255, ${alpha * 0.2})`;
+            ctxToRender.strokeStyle = `rgba(200, 180, 255, ${alpha * 0.2})`;
             ctxToRender.lineWidth = alpha * 2;
             ctxToRender.beginPath();
             ctxToRender.moveTo(particleA.x, particleA.y);
